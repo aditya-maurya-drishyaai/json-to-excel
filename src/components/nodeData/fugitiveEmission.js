@@ -1,6 +1,6 @@
 const data = require("../jsonToExcel/nodeConversion");
 
-
+const facility_type = data.input.caliculation_summary.facility_type;
 exports.fugitiveEmissionMerges = [
   { start: { row: 3, column: 6 }, end: { row: 3, column: 7 } },
   { start: { row: 4, column: 6 }, end: { row: 4, column: 7 } },
@@ -224,7 +224,7 @@ exports.fugitiveEmissionSpecification = {
         return {
           alignment: { horizontal: "center", vertical: "center" },
         };
-      } else if (value === `${data.input.caliculation_summary.facility_type}`) {
+      } else if (value === facility_type) {
         return {
           alignment: { horizontal: "center", vertical: "center" },
         };
