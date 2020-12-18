@@ -64,6 +64,8 @@ expressRouter
       isRequest = true;
       res.attachment("report.xlsx");
       res.send(reportPromise());
+    } else {
+      console.log("Req is not defined");
     }
   });
 app.use("/report", expressRouter);
