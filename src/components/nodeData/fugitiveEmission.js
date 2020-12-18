@@ -99,8 +99,8 @@ exports.fugitiveEmissionMerges = [
   { start: { row: 57, column: 8 }, end: { row: 57, column: 9 } },
   { start: { row: 58, column: 8 }, end: { row: 58, column: 9 } },
   { start: { row: 53, column: 2 }, end: { row: 58, column: 4 } },
-  { start: { row: 65, column: 2 }, end: { row: 65, column: 4 } },
-  { start: { row: 65, column: 5 }, end: { row: 65, column: 10 } },
+  { start: { row: 65, column: 2 }, end: { row: 65, column: 5 } },
+  { start: { row: 65, column: 6 }, end: { row: 65, column: 10 } },
   { start: { row: 66, column: 2 }, end: { row: 66, column: 4 } },
   { start: { row: 67, column: 2 }, end: { row: 67, column: 4 } },
   { start: { row: 68, column: 2 }, end: { row: 68, column: 4 } },
@@ -311,7 +311,15 @@ exports.fugitiveEmissionSpecification = {
           alignment: { horizontal: "left" },
         };
       } else if (value === "H2S") {
-        return { font: { bold: true } };
+        return {
+          font: { bold: true },
+          border: {
+            top: { style: "medium" },
+            right: { style: "medium" },
+            bottom: { style: "medium" },
+            left: { style: "medium" },
+          },
+        };
       }
       return {
         border: {
@@ -352,8 +360,50 @@ exports.fugitiveEmissionSpecification = {
         return {
           alignment: { horizontal: "left" },
         };
-      } else if (value === ">=C5") {
-        return { font: { bold: true } };
+      } 
+      else if (value === "Total =") {
+        return {
+          alignment: { horizontal: "right" },
+          border: {
+            top: { style: "medium" },
+            right: { style: "medium" },
+            bottom: { style: "medium" },
+            left: { style: "medium" },
+          },
+        };
+      }
+      else if (value === "=") {
+        return {
+          alignment: { horizontal: "right" },
+          border: {
+            top: { style: "medium" },
+            right: { style: "medium" },
+            bottom: { style: "medium" },
+            left: { style: "medium" },
+          },
+        };
+      }
+      else if (value === "Total w/CF =") {
+        return {
+          alignment: { horizontal: "right" },
+          border: {
+            top: { style: "medium" },
+            right: { style: "medium" },
+            bottom: { style: "medium" },
+            left: { style: "medium" },
+          },
+        };
+      }
+       else if (value === ">=C5") {
+        return {
+          font: { bold: true },
+          border: {
+            top: { style: "medium" },
+            right: { style: "medium" },
+            bottom: { style: "medium" },
+            left: { style: "medium" },
+          },
+        };
       }
       return {
         border: {
@@ -395,7 +445,15 @@ exports.fugitiveEmissionSpecification = {
           alignment: { horizontal: "left" },
         };
       } else if (value === "87% C1") {
-        return { font: { bold: true } };
+        return {
+          font: { bold: true },
+          border: {
+            top: { style: "medium" },
+            right: { style: "medium" },
+            bottom: { style: "medium" },
+            left: { style: "medium" },
+          },
+        };
       }
       return {
         border: {
@@ -2005,11 +2063,17 @@ exports.fugitiveEmissionData = [
     col_2: "Maximum Ambient Temperature",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Maximum Ambient Temperature"].C}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Maximum Ambient Temperature"].C}`
+    ),
     col_6: "C",
-    col_7: parseInt(`${data.input.building_parameters["Maximum Ambient Temperature"].F}`),
+    col_7: parseInt(
+      `${data.input.building_parameters["Maximum Ambient Temperature"].F}`
+    ),
     col_8: "F",
-    col_9: parseInt(`${data.input.building_parameters["Maximum Ambient Temperature"].R}`),
+    col_9: parseInt(
+      `${data.input.building_parameters["Maximum Ambient Temperature"].R}`
+    ),
     col_10: "R",
     col_11: "",
     col_12: "",
@@ -2349,7 +2413,9 @@ exports.fugitiveEmissionData = [
     col_2: "Height from Eave to Peak",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Height from Eave to Peak(m)"]}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Height from Eave to Peak(m)"]}`
+    ),
     col_6: "m",
     col_7: "",
     col_8: "",
@@ -2435,7 +2501,9 @@ exports.fugitiveEmissionData = [
     col_2: "Volume from Eave to Peak",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Volume from Eave to Peak(m3)"]}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Volume from Eave to Peak(m3)"]}`
+    ),
     col_6: "m3",
     col_7: "",
     col_8: "",
@@ -2478,7 +2546,9 @@ exports.fugitiveEmissionData = [
     col_2: "Volume up to Eave",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Volume up to Eave(m3)"]}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Volume up to Eave(m3)"]}`
+    ),
     col_6: "m3",
     col_7: "",
     col_8: "",
@@ -2521,7 +2591,9 @@ exports.fugitiveEmissionData = [
     col_2: "Volume of Vessel",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Volume of Vessel(m3)"]}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Volume of Vessel(m3)"]}`
+    ),
     col_6: "m3",
     col_7: "",
     col_8: "",
@@ -2607,7 +2679,9 @@ exports.fugitiveEmissionData = [
     col_2: "Bldg volume that contains equipment",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Bldg volume that contains equipment(%)"]}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Bldg volume that contains equipment(%)"]}`
+    ),
     col_6: "%",
     col_7: "",
     col_8: "",
@@ -2650,9 +2724,13 @@ exports.fugitiveEmissionData = [
     col_2: "Building Volume Without Equipment",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Building Volume Without Equipment(cu-m)"]}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Building Volume Without Equipment(cu-m)"]}`
+    ),
     col_6: "cu-m",
-    col_7: parseInt(`${data.input.building_parameters["Building Volume Without Equipment(cu-ft)"]}`),
+    col_7: parseInt(
+      `${data.input.building_parameters["Building Volume Without Equipment(cu-ft)"]}`
+    ),
     col_8: "cu-ft",
     col_9: "",
     col_10: "",
@@ -2693,7 +2771,9 @@ exports.fugitiveEmissionData = [
     col_2: "Max % of Lower Explosive Limit (LEL)",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Max % of Lower Explosive Limit (LEL)"]}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Max % of Lower Explosive Limit (LEL)"]}`
+    ),
     col_6: "%",
     col_7: "",
     col_8: "",
@@ -2736,7 +2816,9 @@ exports.fugitiveEmissionData = [
     col_2: "Contingency Factor (CF)",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.building_parameters["Contingency Factor (CF) %"]}`),
+    col_5: parseInt(
+      `${data.input.building_parameters["Contingency Factor (CF) %"]}`
+    ),
     col_6: "%",
     col_7: "",
     col_8: "",
@@ -2832,7 +2914,7 @@ exports.fugitiveEmissionData = [
     col_12: "P&ID Name:",
     col_13: "",
     col_14: "",
-    col_15: parseInt(`${data.input.items_per_substance[0].pnId}`),
+    col_15: `${data.input.items_per_substance[0].pnId}`,
     col_16: "",
     col_17: "",
     col_18: "",
@@ -2908,10 +2990,18 @@ exports.fugitiveEmissionData = [
     col_2: "Connections",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.connections}`),
-    col_6: parseInt(`${data.input.aggregated_items_for_substance.condensate.connections}`),
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.connections}`),
-    col_8: parseInt(`${data.input.aggregated_items_for_substance.Totals.connections}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.connections}`
+    ),
+    col_6: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.connections}`
+    ),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.connections}`
+    ),
+    col_8: parseInt(
+      `${data.input.aggregated_items_for_substance.Totals.connections}`
+    ),
     col_9: "",
     col_10: "",
     col_11: "",
@@ -2951,10 +3041,18 @@ exports.fugitiveEmissionData = [
     col_2: "Flanges",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.flanges}`),
-    col_6: parseInt(`${data.input.aggregated_items_for_substance.condensate.flanges}`),
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.flanges}`),
-    col_8: parseInt(`${data.input.aggregated_items_for_substance.Totals.flanges}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.flanges}`
+    ),
+    col_6: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.flanges}`
+    ),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.flanges}`
+    ),
+    col_8: parseInt(
+      `${data.input.aggregated_items_for_substance.Totals.flanges}`
+    ),
     col_9: "",
     col_10: "",
     col_11: "",
@@ -2994,10 +3092,18 @@ exports.fugitiveEmissionData = [
     col_2: "Open-Endeds",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas["open-endeds"]}`),
-    col_6: parseInt(`${data.input.aggregated_items_for_substance.condensate["open-endeds"]}`),
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas["open-endeds"]}`),
-    col_8: parseInt(`${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas["open-endeds"]}`
+    ),
+    col_6: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate["open-endeds"]}`
+    ),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas["open-endeds"]}`
+    ),
+    col_8: parseInt(
+      `${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`
+    ),
     col_9: "",
     col_10: "",
     col_11: "",
@@ -3037,10 +3143,18 @@ exports.fugitiveEmissionData = [
     col_2: "Pumps",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.pumps}`),
-    col_6: parseInt(`${data.input.aggregated_items_for_substance.condensate.pumps}`),
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.pumps}`),
-    col_8: parseInt(`${data.input.aggregated_items_for_substance.Totals.pumps}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.pumps}`
+    ),
+    col_6: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.pumps}`
+    ),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.pumps}`
+    ),
+    col_8: parseInt(
+      `${data.input.aggregated_items_for_substance.Totals.pumps}`
+    ),
     col_9: "",
     col_10: "",
     col_11: "",
@@ -3080,10 +3194,18 @@ exports.fugitiveEmissionData = [
     col_2: "Valves",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.valves}`),
-    col_6: parseInt(`${data.input.aggregated_items_for_substance.condensate.valves}`),
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.valves}`),
-    col_8: parseInt(`${data.input.aggregated_items_for_substance.Totals.valves}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.valves}`
+    ),
+    col_6: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.valves}`
+    ),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.valves}`
+    ),
+    col_8: parseInt(
+      `${data.input.aggregated_items_for_substance.Totals.valves}`
+    ),
     col_9: "",
     col_10: "",
     col_11: "",
@@ -3123,10 +3245,18 @@ exports.fugitiveEmissionData = [
     col_2: "*Others",
     col_3: "",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.others}`),
-    col_6: parseInt(`${data.input.aggregated_items_for_substance.condensate.others}`),
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.others}`),
-    col_8: parseInt(`${data.input.aggregated_items_for_substance.Totals.others}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.others}`
+    ),
+    col_6: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.others}`
+    ),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.others}`
+    ),
+    col_8: parseInt(
+      `${data.input.aggregated_items_for_substance.Totals.others}`
+    ),
     col_9: "",
     col_10: "",
     col_11: "",
@@ -3298,9 +3428,13 @@ exports.fugitiveEmissionData = [
     col_5: `${data.input.caliculation_summary.eq_items[0].name}`,
     col_6: "",
     col_7: parseInt(`${data.input.caliculation_summary.eq_items[0].quantity}`),
-    col_8: parseInt(`${data.input.caliculation_summary.eq_items[0]["Prediction Factor (lbs/day)"]}`),
+    col_8: parseInt(
+      `${data.input.caliculation_summary.eq_items[0]["Prediction Factor (lbs/day)"]}`
+    ),
     col_9: "",
-    col_10: parseInt(`${data.input.caliculation_summary.eq_items[0]["Total Emissions (lbs/day)"]}`),
+    col_10: parseInt(
+      `${data.input.caliculation_summary.eq_items[0]["Total Emissions (lbs/day)"]}`
+    ),
     col_11: "",
     col_12: "",
     col_13: "",
@@ -3341,9 +3475,13 @@ exports.fugitiveEmissionData = [
     col_5: `${data.input.caliculation_summary.eq_items[1].name}`,
     col_6: "",
     col_7: parseInt(`${data.input.caliculation_summary.eq_items[1].quantity}`),
-    col_8: parseInt(`${data.input.caliculation_summary.eq_items[1]["Prediction Factor (lbs/day)"]}`),
+    col_8: parseInt(
+      `${data.input.caliculation_summary.eq_items[1]["Prediction Factor (lbs/day)"]}`
+    ),
     col_9: "",
-    col_10: parseInt(`${data.input.caliculation_summary.eq_items[1]["Total Emissions (lbs/day)"]}`),
+    col_10: parseInt(
+      `${data.input.caliculation_summary.eq_items[1]["Total Emissions (lbs/day)"]}`
+    ),
     col_11: "",
     col_12: "",
     col_13: "",
@@ -3384,9 +3522,13 @@ exports.fugitiveEmissionData = [
     col_5: `${data.input.caliculation_summary.eq_items[2].name}`,
     col_6: "",
     col_7: parseInt(`${data.input.caliculation_summary.eq_items[2].quantity}`),
-    col_8: parseInt(`${data.input.caliculation_summary.eq_items[2]["Prediction Factor (lbs/day)"]}`),
+    col_8: parseInt(
+      `${data.input.caliculation_summary.eq_items[2]["Prediction Factor (lbs/day)"]}`
+    ),
     col_9: "",
-    col_10: parseInt(`${data.input.caliculation_summary.eq_items[2]["Total Emissions (lbs/day)"]}`),
+    col_10: parseInt(
+      `${data.input.caliculation_summary.eq_items[2]["Total Emissions (lbs/day)"]}`
+    ),
     col_11: "",
     col_12: "",
     col_13: "",
@@ -3427,9 +3569,13 @@ exports.fugitiveEmissionData = [
     col_5: `${data.input.caliculation_summary.eq_items[3].name}`,
     col_6: "",
     col_7: parseInt(`${data.input.caliculation_summary.eq_items[3].quantity}`),
-    col_8: parseInt(`${data.input.caliculation_summary.eq_items[3]["Prediction Factor (lbs/day)"]}`),
+    col_8: parseInt(
+      `${data.input.caliculation_summary.eq_items[3]["Prediction Factor (lbs/day)"]}`
+    ),
     col_9: "",
-    col_10: parseInt(`${data.input.caliculation_summary.eq_items[3]["Total Emissions (lbs/day)"]}`),
+    col_10: parseInt(
+      `${data.input.caliculation_summary.eq_items[3]["Total Emissions (lbs/day)"]}`
+    ),
     col_11: "",
     col_12: "",
     col_13: "",
@@ -3470,9 +3616,13 @@ exports.fugitiveEmissionData = [
     col_5: `${data.input.caliculation_summary.eq_items[4].name}`,
     col_6: "",
     col_7: parseInt(`${data.input.caliculation_summary.eq_items[4].quantity}`),
-    col_8: parseInt(`${data.input.caliculation_summary.eq_items[4]["Prediction Factor (lbs/day)"]}`),
+    col_8: parseInt(
+      `${data.input.caliculation_summary.eq_items[4]["Prediction Factor (lbs/day)"]}`
+    ),
     col_9: "",
-    col_10: parseInt(`${data.input.caliculation_summary.eq_items[4]["Total Emissions (lbs/day)"]}`),
+    col_10: parseInt(
+      `${data.input.caliculation_summary.eq_items[4]["Total Emissions (lbs/day)"]}`
+    ),
     col_11: "",
     col_12: "",
     col_13: "",
@@ -3513,9 +3663,13 @@ exports.fugitiveEmissionData = [
     col_5: `${data.input.caliculation_summary.eq_items[5].name}`,
     col_6: "",
     col_7: parseInt(`${data.input.caliculation_summary.eq_items[5].quantity}`),
-    col_8: parseInt(`${data.input.caliculation_summary.eq_items[5]["Prediction Factor (lbs/day)"]}`),
+    col_8: parseInt(
+      `${data.input.caliculation_summary.eq_items[5]["Prediction Factor (lbs/day)"]}`
+    ),
     col_9: "",
-    col_10: parseInt(`${data.input.caliculation_summary.eq_items[5]["Total Emissions (lbs/day)"]}`),
+    col_10: parseInt(
+      `${data.input.caliculation_summary.eq_items[5]["Total Emissions (lbs/day)"]}`
+    ),
     col_11: "",
     col_12: "",
     col_13: "",
@@ -3600,7 +3754,9 @@ exports.fugitiveEmissionData = [
     col_6: "",
     col_7: "Total =",
     col_8: "",
-    col_9: parseInt(`${data.input.caliculation_summary["sub_total (lbs/day)"]}`),
+    col_9: parseInt(
+      `${data.input.caliculation_summary["sub_total (lbs/day)"]}`
+    ),
     col_10: "lbs/day",
     col_11: "",
     col_12: "",
@@ -3686,7 +3842,9 @@ exports.fugitiveEmissionData = [
     col_6: "",
     col_7: "Total w/CF =",
     col_8: "",
-    col_9: parseInt(`${data.input.caliculation_summary["sub_total w/CF (lbs/day)"]}`),
+    col_9: parseInt(
+      `${data.input.caliculation_summary["sub_total w/CF (lbs/day)"]}`
+    ),
     col_10: "lbs/day",
     col_11: "",
     col_12: "",
@@ -3729,7 +3887,9 @@ exports.fugitiveEmissionData = [
     col_6: "",
     col_7: "=",
     col_8: "",
-    col_9: parseInt(`${data.input.caliculation_summary["sub_total w/CF (lbs/hr)"]}`),
+    col_9: parseInt(
+      `${data.input.caliculation_summary["sub_total w/CF (lbs/hr)"]}`
+    ),
     col_10: "lbs/hr",
     col_11: "",
     col_12: "",
@@ -4069,11 +4229,17 @@ exports.fugitiveEmissionData = [
     col_2: "Items",
     col_3: "Connections",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.connections}/${data.input.aggregated_items_for_substance.Totals.connections}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.connections}/${data.input.aggregated_items_for_substance.Totals.connections}`
+    ),
     col_6: "",
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.condensate.connections}/${data.input.aggregated_items_for_substance.Totals.connections}`),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.connections}/${data.input.aggregated_items_for_substance.Totals.connections}`
+    ),
     col_8: "",
-    col_9: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.connections}/${data.input.aggregated_items_for_substance.Totals.connections}`),
+    col_9: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.connections}/${data.input.aggregated_items_for_substance.Totals.connections}`
+    ),
     col_10: "",
     col_11: "",
     col_12: "",
@@ -4112,11 +4278,17 @@ exports.fugitiveEmissionData = [
     col_2: "",
     col_3: "Flanges",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.flanges}/${data.input.aggregated_items_for_substance.Totals.flanges}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.flanges}/${data.input.aggregated_items_for_substance.Totals.flanges}`
+    ),
     col_6: "",
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.condensate.flanges}/${data.input.aggregated_items_for_substance.Totals.flanges}`),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.flanges}/${data.input.aggregated_items_for_substance.Totals.flanges}`
+    ),
     col_8: "",
-    col_9: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.flanges}/${data.input.aggregated_items_for_substance.Totals.flanges}`),
+    col_9: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.flanges}/${data.input.aggregated_items_for_substance.Totals.flanges}`
+    ),
     col_10: "",
     col_11: "",
     col_12: "",
@@ -4155,11 +4327,17 @@ exports.fugitiveEmissionData = [
     col_2: "",
     col_3: "Open-Endeds",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas["open-endeds"]}/${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas["open-endeds"]}/${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`
+    ),
     col_6: "",
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.condensate["open-endeds"]}/${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate["open-endeds"]}/${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`
+    ),
     col_8: "",
-    col_9: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas["open-endeds"]}/${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`),
+    col_9: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas["open-endeds"]}/${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`
+    ),
     col_10: "",
     col_11: "",
     col_12: "",
@@ -4198,11 +4376,17 @@ exports.fugitiveEmissionData = [
     col_2: "",
     col_3: "Pumps",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.pumps}/${data.input.aggregated_items_for_substance.Totals.pumps}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.pumps}/${data.input.aggregated_items_for_substance.Totals.pumps}`
+    ),
     col_6: "",
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.condensate.pumps}/${data.input.aggregated_items_for_substance.Totals.pumps}`),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.pumps}/${data.input.aggregated_items_for_substance.Totals.pumps}`
+    ),
     col_8: "",
-    col_9: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.pumps}/${data.input.aggregated_items_for_substance.Totals.pumps}`),
+    col_9: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.pumps}/${data.input.aggregated_items_for_substance.Totals.pumps}`
+    ),
     col_10: "",
     col_11: "",
     col_12: "",
@@ -4241,11 +4425,17 @@ exports.fugitiveEmissionData = [
     col_2: "",
     col_3: "Valves",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.valves}/${data.input.aggregated_items_for_substance.Totals.valves}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.valves}/${data.input.aggregated_items_for_substance.Totals.valves}`
+    ),
     col_6: "",
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.condensate.valves}/${data.input.aggregated_items_for_substance.Totals.valves}`),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.valves}/${data.input.aggregated_items_for_substance.Totals.valves}`
+    ),
     col_8: "",
-    col_9: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.valves}/${data.input.aggregated_items_for_substance.Totals.valves}`),
+    col_9: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.valves}/${data.input.aggregated_items_for_substance.Totals.valves}`
+    ),
     col_10: "",
     col_11: "",
     col_12: "",
@@ -4284,11 +4474,17 @@ exports.fugitiveEmissionData = [
     col_2: "",
     col_3: "*Others",
     col_4: "",
-    col_5: parseInt(`${data.input.aggregated_items_for_substance.acid_gas.others}/${data.input.aggregated_items_for_substance.Totals.others}`),
+    col_5: parseInt(
+      `${data.input.aggregated_items_for_substance.acid_gas.others}/${data.input.aggregated_items_for_substance.Totals.others}`
+    ),
     col_6: "",
-    col_7: parseInt(`${data.input.aggregated_items_for_substance.condensate.others}/${data.input.aggregated_items_for_substance.Totals.others}`),
+    col_7: parseInt(
+      `${data.input.aggregated_items_for_substance.condensate.others}/${data.input.aggregated_items_for_substance.Totals.others}`
+    ),
     col_8: "",
-    col_9: parseInt(`${data.input.aggregated_items_for_substance.fuel_gas.others}/${data.input.aggregated_items_for_substance.Totals.others}`),
+    col_9: parseInt(
+      `${data.input.aggregated_items_for_substance.fuel_gas.others}/${data.input.aggregated_items_for_substance.Totals.others}`
+    ),
     col_10: "",
     col_11: "",
     col_12: "",
