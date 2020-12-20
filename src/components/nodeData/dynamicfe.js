@@ -10,9 +10,9 @@ const {
   minFreshAirIntroductionRate,
   minAirChangeRequiredForAdequateVentilation,
 } = require("./feCalculatedValues");
-const {dynamicTableData} = require("./dynamicTable");
-console.log(dynamicTableData)
-const facility_type = data.input.caliculation_summary.facility_type;
+// const { dynamicTableData } = require("./dynamicTable");
+const { dynamicNewTableData,dynamicSpecification } = require("./dyanmicNewTable");
+
 exports.fugitiveEmissionMerges = [
   { start: { row: 3, column: 6 }, end: { row: 3, column: 7 } },
   { start: { row: 4, column: 6 }, end: { row: 4, column: 7 } },
@@ -59,19 +59,7 @@ exports.fugitiveEmissionMerges = [
   { start: { row: 39, column: 2 }, end: { row: 39, column: 4 } },
   { start: { row: 40, column: 2 }, end: { row: 40, column: 4 } },
   { start: { row: 42, column: 2 }, end: { row: 42, column: 10 } },
-  { start: { row: 42, column: 12 }, end: { row: 42, column: 14 } },
-  { start: { row: 42, column: 15 }, end: { row: 42, column: 17 } },
   { start: { row: 43, column: 2 }, end: { row: 43, column: 4 } },
-  { start: { row: 43, column: 12 }, end: { row: 43, column: 14 } },
-  { start: { row: 43, column: 15 }, end: { row: 43, column: 17 } },
-  { start: { row: 43, column: 18 }, end: { row: 43, column: 20 } },
-  { start: { row: 43, column: 21 }, end: { row: 43, column: 23 } },
-  { start: { row: 43, column: 24 }, end: { row: 43, column: 26 } },
-  { start: { row: 43, column: 27 }, end: { row: 43, column: 29 } },
-  { start: { row: 43, column: 30 }, end: { row: 43, column: 32 } },
-  { start: { row: 43, column: 33 }, end: { row: 43, column: 35 } },
-  { start: { row: 43, column: 36 }, end: { row: 43, column: 38 } },
-  { start: { row: 43, column: 39 }, end: { row: 43, column: 41 } },
   { start: { row: 44, column: 2 }, end: { row: 44, column: 4 } },
   { start: { row: 45, column: 2 }, end: { row: 45, column: 4 } },
   { start: { row: 46, column: 2 }, end: { row: 46, column: 4 } },
@@ -183,973 +171,7 @@ exports.fugitiveEmissionMerges = [
   { start: { row: 96, column: 3 }, end: { row: 96, column: 10 } },
   { start: { row: 97, column: 3 }, end: { row: 97, column: 10 } },
 ];
-exports.fugitiveEmissionSpecification = {
-  col_1: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-  },
-  col_2: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return { alignment: { horizontal: "left" } };
-      } else if (value === "Spreadsheet Description:") {
-        return {
-          alignment: {
-            wrapText: true,
-            vertical: "center",
-            horizontal: "center",
-          },
-          border: {
-            top: { style: "medium" },
-            right: { style: "medium" },
-            bottom: { style: "medium" },
-            left: { style: "medium" },
-          },
-        };
-      } else if (value === "Building Parameters") {
-        return {
-          fill: { fgColor: { rgb: "C6D9F0" } },
-          font: { sz: "14", bold: true },
-        };
-      } else if (value === "Description") {
-        return {
-          font: { sz: "12", bold: true },
-        };
-      } else if (value === "Number of Items Per Substance") {
-        return {
-          fill: { fgColor: { rgb: "C6D9F0" } },
-          font: { sz: "14", bold: true },
-        };
-      } else if (value === "Fugitive Emissions Calculation Summary") {
-        return {
-          fill: { fgColor: { rgb: "C6D9F0" } },
-          font: { sz: "14", bold: true },
-        };
-      } else if (value === "Adequate Ventilation Rate Calculation:") {
-        return {
-          fill: { fgColor: { rgb: "C6D9F0" } },
-          font: { sz: "14", bold: true },
-        };
-      } else if (value === "Facility Type") {
-        return {
-          alignment: { horizontal: "center", vertical: "center" },
-        };
-      } else if (value === facility_type) {
-        return {
-          alignment: { horizontal: "center", vertical: "center" },
-        };
-      } else if (value === "Sour Gas Dehy. Skid (BU-406)") {
-        return {
-          fill: { fgColor: { rgb: "C6D9F0" } },
-        };
-      } else if (
-        value ===
-        "*Others includes: instruments, loading arms, pressure relief valves, stuffing boxes, compressor seals, dump lever arms, vents"
-      ) {
-        return { font: { italic: true } };
-      } else if (value === "References") {
-        return {
-          font: { sz: "12", bold: true },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_3: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_4: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return { alignment: { horizontal: "left" } };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-  },
-  col_5: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      } else if (value === "H2S") {
-        return {
-          font: { bold: true },
-          border: {
-            top: { style: "medium" },
-            right: { style: "medium" },
-            bottom: { style: "medium" },
-            left: { style: "medium" },
-          },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_6: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_7: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      } else if (value === "Total =") {
-        return {
-          alignment: { horizontal: "right" },
-          border: {
-            top: { style: "medium" },
-            right: { style: "medium" },
-            bottom: { style: "medium" },
-            left: { style: "medium" },
-          },
-        };
-      } else if (value === "=") {
-        return {
-          alignment: { horizontal: "right" },
-          border: {
-            top: { style: "medium" },
-            right: { style: "medium" },
-            bottom: { style: "medium" },
-            left: { style: "medium" },
-          },
-        };
-      } else if (value === "Total w/CF =") {
-        return {
-          alignment: { horizontal: "right" },
-          border: {
-            top: { style: "medium" },
-            right: { style: "medium" },
-            bottom: { style: "medium" },
-            left: { style: "medium" },
-          },
-        };
-      } else if (value === ">=C5") {
-        return {
-          font: { bold: true },
-          border: {
-            top: { style: "medium" },
-            right: { style: "medium" },
-            bottom: { style: "medium" },
-            left: { style: "medium" },
-          },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_8: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_9: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      } else if (value === "87% C1") {
-        return {
-          font: { bold: true },
-          border: {
-            top: { style: "medium" },
-            right: { style: "medium" },
-            bottom: { style: "medium" },
-            left: { style: "medium" },
-          },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_10: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_11: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      } else if (value === "P&ID Name:") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true },
-      };
-    },
-  },
-  col_12: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_13: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_14: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_15: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_16: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_17: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_18: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_19: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_20: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_21: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_22: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_23: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_24: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_25: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_26: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_27: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_28: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_29: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_30: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-
-  col_31: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-
-  col_32: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-
-  col_33: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-
-  col_34: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-
-  col_35: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-
-  col_36: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-
-  col_37: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-
-  col_38: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_39: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_40: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-  col_41: {
-    displayName: "",
-    headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
-    cellStyle: (value, row) => {
-      if (value === "") {
-        return {
-          alignment: { horizontal: "left" },
-        };
-      } else if (value === undefined) {
-        return {
-          fill: { fgColor: { rgb: "FFFFFF" } },
-        };
-      }
-      return {
-        border: {
-          top: { style: "medium" },
-          right: { style: "medium" },
-          bottom: { style: "medium" },
-          left: { style: "medium" },
-        },
-        alignment: { wrapText: true, horizontal: "center" },
-      };
-    },
-    width: "5",
-  },
-};
+exports.fugitiveEmissionSpecification=dynamicSpecification;
 
 exports.fugitiveEmissionData = [
   {
@@ -2896,393 +1918,14 @@ exports.fugitiveEmissionData = [
     col_40: "",
     col_41: "",
   },
-  {
-    col_1: "",
-    col_2: "Number of Items Per Substance",
-    col_3: "",
-    col_4: "",
-    col_5: "",
-    col_6: "",
-    col_7: "",
-    col_8: "",
-    col_9: "",
-    dynamicTableData,
-    col_16: "",
-    col_17: "",
-    col_18: "",
-    col_19: "",
-    col_20: "",
-    col_21: "",
-    col_22: "",
-    col_23: "",
-    col_24: "",
-    col_25: "",
-    col_26: "",
-    col_27: "",
-    col_28: "",
-    col_29: "",
-    col_30: "",
-    col_31: "",
-    col_32: "",
-    col_33: "",
-    col_34: "",
-    col_35: "",
-    col_36: "",
-    col_37: "",
-    col_38: "",
-    col_39: "",
-    col_40: "",
-    col_41: "",
-  },
-  {
-    col_1: "",
-    col_2: "Items",
-    col_3: "",
-    col_4: "",
-    col_5: "Acid Gas",
-    col_6: "Condensate",
-    col_7: "Fuel Gas",
-    col_8: "Total",
-    col_9: "",
-    col_10: "",
-    col_11: "",
-    col_12: "146",
-    col_13: "",
-    col_14: "",
-    col_15: "147",
-    col_16: "",
-    col_17: "",
-    col_18: "148",
-    col_19: "",
-    col_20: "",
-    col_21: "149",
-    col_22: "",
-    col_23: "",
-    col_24: "150",
-    col_25: "",
-    col_26: "",
-    col_27: "151",
-    col_28: "",
-    col_29: "",
-    col_30: "P&ID Page",
-    col_31: "",
-    col_32: "",
-    col_33: "P&ID Page",
-    col_34: "",
-    col_35: "",
-    col_36: "P&ID Page",
-    col_37: "",
-    col_38: "",
-    col_39: "P&ID Page",
-    col_40: "",
-    col_41: "",
-  },
-  {
-    col_1: "",
-    col_2: "Connections",
-    col_3: "",
-    col_4: "",
-    col_5: parseInt(
-      `${data.input.aggregated_items_for_substance.acid_gas.connections}`
-    ),
-    col_6: parseInt(
-      `${data.input.aggregated_items_for_substance.condensate.connections}`
-    ),
-    col_7: parseInt(
-      `${data.input.aggregated_items_for_substance.fuel_gas.connections}`
-    ),
-    col_8: parseInt(
-      `${data.input.aggregated_items_for_substance.Totals.connections}`
-    ),
-    col_9: "",
-    col_10: "",
-    col_11: "",
-    col_12: "AG",
-    col_13: "Cond",
-    col_14: "FG",
-    col_15: "AG",
-    col_16: "Cond",
-    col_17: "FG",
-    col_18: "AG",
-    col_19: "Cond",
-    col_20: "FG",
-    col_21: "AG",
-    col_22: "Cond",
-    col_23: "FG",
-    col_24: "AG",
-    col_25: "Cond",
-    col_26: "FG",
-    col_27: "AG",
-    col_28: "Cond",
-    col_29: "FG",
-    col_30: "Sub1",
-    col_31: "Sub2",
-    col_32: "Sub3",
-    col_33: "Sub1",
-    col_34: "Sub2",
-    col_35: "Sub3",
-    col_36: "Sub1",
-    col_37: "Sub2",
-    col_38: "Sub3",
-    col_39: "Sub1",
-    col_40: "Sub2",
-    col_41: "Sub3",
-  },
-  {
-    col_1: "",
-    col_2: "Flanges",
-    col_3: "",
-    col_4: "",
-    col_5: parseInt(
-      `${data.input.aggregated_items_for_substance.acid_gas.flanges}`
-    ),
-    col_6: parseInt(
-      `${data.input.aggregated_items_for_substance.condensate.flanges}`
-    ),
-    col_7: parseInt(
-      `${data.input.aggregated_items_for_substance.fuel_gas.flanges}`
-    ),
-    col_8: parseInt(
-      `${data.input.aggregated_items_for_substance.Totals.flanges}`
-    ),
-    col_9: "",
-    col_10: "",
-    col_11: "",
-    col_12: "14",
-    col_13: "14",
-    col_14: "8",
-    col_15: "26",
-    col_16: "",
-    col_17: "8",
-    col_18: "",
-    col_19: "",
-    col_20: "",
-    col_21: "",
-    col_22: "",
-    col_23: "",
-    col_24: "",
-    col_25: "",
-    col_26: "",
-    col_27: "30",
-    col_28: "",
-    col_29: "",
-    col_30: "",
-    col_31: "",
-    col_32: "",
-    col_33: "",
-    col_34: "",
-    col_35: "",
-    col_36: "",
-    col_37: "",
-    col_38: "",
-    col_39: "",
-    col_40: "",
-    col_41: "",
-  },
-  {
-    col_1: "",
-    col_2: "Open-Endeds",
-    col_3: "",
-    col_4: "",
-    col_5: parseInt(
-      `${data.input.aggregated_items_for_substance.acid_gas["open-endeds"]}`
-    ),
-    col_6: parseInt(
-      `${data.input.aggregated_items_for_substance.condensate["open-endeds"]}`
-    ),
-    col_7: parseInt(
-      `${data.input.aggregated_items_for_substance.fuel_gas["open-endeds"]}`
-    ),
-    col_8: parseInt(
-      `${data.input.aggregated_items_for_substance.Totals["open-endeds"]}`
-    ),
-    col_9: "",
-    col_10: "",
-    col_11: "",
-    col_12: "31",
-    col_13: "28",
-    col_14: "0",
-    col_15: "13",
-    col_16: "",
-    col_17: "1",
-    col_18: "",
-    col_19: "",
-    col_20: "",
-    col_21: "",
-    col_22: "",
-    col_23: "",
-    col_24: "",
-    col_25: "",
-    col_26: "",
-    col_27: "28",
-    col_28: "",
-    col_29: "",
-    col_30: "",
-    col_31: "",
-    col_32: "",
-    col_33: "",
-    col_34: "",
-    col_35: "",
-    col_36: "",
-    col_37: "",
-    col_38: "",
-    col_39: "",
-    col_40: "",
-    col_41: "",
-  },
-  {
-    col_1: "",
-    col_2: "Pumps",
-    col_3: "",
-    col_4: "",
-    col_5: parseInt(
-      `${data.input.aggregated_items_for_substance.acid_gas.pumps}`
-    ),
-    col_6: parseInt(
-      `${data.input.aggregated_items_for_substance.condensate.pumps}`
-    ),
-    col_7: parseInt(
-      `${data.input.aggregated_items_for_substance.fuel_gas.pumps}`
-    ),
-    col_8: parseInt(
-      `${data.input.aggregated_items_for_substance.Totals.pumps}`
-    ),
-    col_9: "",
-    col_10: "",
-    col_11: "",
-    col_12: "3",
-    col_13: "3",
-    col_14: "0",
-    col_15: "0",
-    col_16: "",
-    col_17: "1",
-    col_18: "",
-    col_19: "",
-    col_20: "",
-    col_21: "",
-    col_22: "",
-    col_23: "",
-    col_24: "",
-    col_25: "",
-    col_26: "",
-    col_27: "10",
-    col_28: "",
-    col_29: "",
-    col_30: "",
-    col_31: "",
-    col_32: "",
-    col_33: "",
-    col_34: "",
-    col_35: "",
-    col_36: "",
-    col_37: "",
-    col_38: "",
-    col_39: "",
-    col_40: "",
-    col_41: "",
-  },
-  {
-    col_1: "",
-    col_2: "Valves",
-    col_3: "",
-    col_4: "",
-    col_5: parseInt(
-      `${data.input.aggregated_items_for_substance.acid_gas.valves}`
-    ),
-    col_6: parseInt(
-      `${data.input.aggregated_items_for_substance.condensate.valves}`
-    ),
-    col_7: parseInt(
-      `${data.input.aggregated_items_for_substance.fuel_gas.valves}`
-    ),
-    col_8: parseInt(
-      `${data.input.aggregated_items_for_substance.Totals.valves}`
-    ),
-    col_9: "",
-    col_10: "",
-    col_11: "",
-    col_12: "0",
-    col_13: "0",
-    col_14: "0",
-    col_15: "0",
-    col_16: "",
-    col_17: "0",
-    col_18: "",
-    col_19: "",
-    col_20: "",
-    col_21: "",
-    col_22: "",
-    col_23: "",
-    col_24: "",
-    col_25: "",
-    col_26: "",
-    col_27: "0",
-    col_28: "",
-    col_29: "",
-    col_30: "",
-    col_31: "",
-    col_32: "",
-    col_33: "",
-    col_34: "",
-    col_35: "",
-    col_36: "",
-    col_37: "",
-    col_38: "",
-    col_39: "",
-    col_40: "",
-    col_41: "",
-  },
-  {
-    col_1: "",
-    col_2: "*Others",
-    col_3: "",
-    col_4: "",
-    col_5: parseInt(
-      `${data.input.aggregated_items_for_substance.acid_gas.others}`
-    ),
-    col_6: parseInt(
-      `${data.input.aggregated_items_for_substance.condensate.others}`
-    ),
-    col_7: parseInt(
-      `${data.input.aggregated_items_for_substance.fuel_gas.others}`
-    ),
-    col_8: parseInt(
-      `${data.input.aggregated_items_for_substance.Totals.others}`
-    ),
-    col_9: "",
-    col_10: "",
-    col_11: "",
-    col_12: "24",
-    col_13: "27",
-    col_14: "4",
-    col_15: "23",
-    col_16: "",
-    col_17: "13",
-    col_18: "",
-    col_19: "",
-    col_20: "",
-    col_21: "",
-    col_22: "",
-    col_23: "",
-    col_24: "",
-    col_25: "",
-    col_26: "",
-    col_27: "39",
-    col_28: "",
-    col_29: "",
-    col_30: "",
-    col_31: "",
-    col_32: "",
-    col_33: "",
-    col_34: "",
-    col_35: "",
-    col_36: "",
-    col_37: "",
-    col_38: "",
-    col_39: "",
-    col_40: "",
-    col_41: "",
-  },
+  dynamicNewTableData.header,
+  dynamicNewTableData.title,
+  dynamicNewTableData.connection,
+  dynamicNewTableData.flanges,
+  dynamicNewTableData.open_endeds,
+  dynamicNewTableData.pumps,
+  dynamicNewTableData.valves,
+  dynamicNewTableData.others,
   {
     col_1: "",
     col_2: "",
@@ -3295,12 +1938,12 @@ exports.fugitiveEmissionData = [
     col_9: "",
     col_10: "",
     col_11: "",
-    col_12: "8",
-    col_13: "12",
-    col_14: "1",
-    col_15: "5",
+    col_12: "",
+    col_13: "",
+    col_14: "",
+    col_15: "",
     col_16: "",
-    col_17: "1",
+    col_17: "",
     col_18: "",
     col_19: "",
     col_20: "",
@@ -3310,7 +1953,7 @@ exports.fugitiveEmissionData = [
     col_24: "",
     col_25: "",
     col_26: "",
-    col_27: "9",
+    col_27: "",
     col_28: "",
     col_29: "",
     col_30: "",
@@ -5415,3 +4058,981 @@ exports.fugitiveEmissionData = [
     col_41: "",
   },
 ];
+// exports.fugitiveEmissionSpecification = {
+//   col_1: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//   },
+//   col_2: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return { alignment: { horizontal: "left" } };
+//       } else if (value === "Spreadsheet Description:") {
+//         return {
+//           alignment: {
+//             wrapText: true,
+//             vertical: "center",
+//             horizontal: "center",
+//           },
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//         };
+//       } else if (value === "Building Parameters") {
+//         return {
+//           fill: { fgColor: { rgb: "C6D9F0" } },
+//           font: { sz: "14", bold: true },
+//         };
+//       } else if (value === "Description") {
+//         return {
+//           font: { sz: "12", bold: true },
+//         };
+//       } else if (value === "Number of Items Per Substance") {
+//         return {
+//           fill: { fgColor: { rgb: "C6D9F0" } },
+//           font: { sz: "14", bold: true },
+//         };
+//       } else if (value === "Fugitive Emissions Calculation Summary") {
+//         return {
+//           fill: { fgColor: { rgb: "C6D9F0" } },
+//           font: { sz: "14", bold: true },
+//         };
+//       } else if (value === "Adequate Ventilation Rate Calculation:") {
+//         return {
+//           fill: { fgColor: { rgb: "C6D9F0" } },
+//           font: { sz: "14", bold: true },
+//         };
+//       } else if (value === "Facility Type") {
+//         return {
+//           alignment: { horizontal: "center", vertical: "center" },
+//         };
+//       } else if (value === facility_type) {
+//         return {
+//           alignment: { horizontal: "center", vertical: "center" },
+//         };
+//       } else if (value === "Sour Gas Dehy. Skid (BU-406)") {
+//         return {
+//           fill: { fgColor: { rgb: "C6D9F0" } },
+//         };
+//       } else if (
+//         value ===
+//         "*Others includes: instruments, loading arms, pressure relief valves, stuffing boxes, compressor seals, dump lever arms, vents"
+//       ) {
+//         return { font: { italic: true } };
+//       } else if (value === "References") {
+//         return {
+//           font: { sz: "12", bold: true },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true },
+//       };
+//     },
+//   },
+//   col_3: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true },
+//       };
+//     },
+//   },
+//   col_4: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return { alignment: { horizontal: "left" } };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//   },
+//   col_5: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       } else if (value === "H2S") {
+//         return {
+//           font: { bold: true },
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true },
+//       };
+//     },
+//   },
+//   col_6: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true },
+//       };
+//     },
+//   },
+//   col_7: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       } else if (value === "Total =") {
+//         return {
+//           alignment: { horizontal: "right" },
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//         };
+//       } else if (value === "=") {
+//         return {
+//           alignment: { horizontal: "right" },
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//         };
+//       } else if (value === "Total w/CF =") {
+//         return {
+//           alignment: { horizontal: "right" },
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//         };
+//       } else if (value === ">=C5") {
+//         return {
+//           font: { bold: true },
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true },
+//       };
+//     },
+//   },
+//   col_8: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true },
+//       };
+//     },
+//   },
+//   col_9: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       } else if (value === "87% C1") {
+//         return {
+//           font: { bold: true },
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true },
+//       };
+//     },
+//   },
+//   col_10: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return { alignment: { horizontal: "right" } };
+//       } else if (typeof value === "string") {
+//         return {
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//           alignment: { wrapText: true },
+//         };
+//       } else if (typeof value === "number") {
+//         return {
+//           border: {
+//             top: { style: "medium" },
+//             right: { style: "medium" },
+//             bottom: { style: "medium" },
+//             left: { style: "medium" },
+//           },
+//           alignment: { wrapText: true },
+//         };
+//       }
+      
+//     },
+//   },
+
+//   col_11: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       } else if (value === "P&ID Name:") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true },
+//       };
+//     },
+//   },
+//   col_12: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_13: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_14: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_15: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_16: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_17: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_18: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_19: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_20: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_21: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_22: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_23: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_24: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_25: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_26: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_27: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_28: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_29: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_30: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+
+//   col_31: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+
+//   col_32: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+
+//   col_33: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+
+//   col_34: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+
+//   col_35: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+
+//   col_36: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+
+//   col_37: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+
+//   col_38: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_39: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_40: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+//   col_41: {
+//     displayName: "",
+//     headerStyle: { font: { color: { rgb: "FFFFFFFF" } } },
+//     cellStyle: (value, row) => {
+//       if (value === "") {
+//         return {
+//           alignment: { horizontal: "left" },
+//         };
+//       } else if (value === undefined) {
+//         return {
+//           fill: { fgColor: { rgb: "FFFFFF" } },
+//         };
+//       }
+//       return {
+//         border: {
+//           top: { style: "medium" },
+//           right: { style: "medium" },
+//           bottom: { style: "medium" },
+//           left: { style: "medium" },
+//         },
+//         alignment: { wrapText: true, horizontal: "center" },
+//       };
+//     },
+//     width: "5",
+//   },
+// };

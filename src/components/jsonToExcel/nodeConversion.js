@@ -13,7 +13,7 @@ let isRequest = false;
 const reportPromise = () => {
   if (isRequest) {
     const methodology = require("../nodeData/methodology");
-    const fugitiveEmission = require("../nodeData/fugitiveEmission");
+    const fugitiveEmission = require("../nodeData/dynamicfe");
     const naturalVegitaion = require("../nodeData/naturalVegitation");
     const apiRpFigure = require("../nodeData/apiRpFigure");
     const sheetReview = require("../nodeData/sheetReview");
